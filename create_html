@@ -1,0 +1,6 @@
+# add member
+
+# - edit members.php
+# - run this command
+
+php generate.php >| index.html

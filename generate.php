@@ -1,52 +1,5 @@
 <?php
-$members=[
-    [
-        "name"=>"J",
-        "img"=>"team-1.jpg",
-        "summary"=>"美容師",
-        "description"=>"ゴルフとナンパが好き。<br>ナンパが好き。"
-    ],
-    [
-        "name"=>"A",
-        "img"=>"team-2.jpg",
-        "summary"=>"無職",
-        "description"=>"無職。限定好き。<br>地図が読めない。"
-    ],
-    [
-        "name"=>"T",
-        "img"=>"team-3.jpg",
-        "summary"=>"CTO",
-        "description"=>"多忙",
-    ],
-    [
-        "name"=>"N",
-        "img"=>"team-4.jpg",
-        "summary"=>"飲食店店員",
-        "description"=>"ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>108出したので破門の危機。",
-
-    ],
-    [
-        "name"=>"M",
-        "img"=>"team-5.jpg",
-        "summary"=>"土偶",
-        "description"=>"地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。",
-    ],
-];
-/* <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
- * <div class="member-info">
- *   <h4>T</h4>
- *   <span>CTO</span>
- *   <p>多忙</p>
- * <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
- *   <h4>N</h4>
- *   <span>飲食店店員</span>
- *   <p>ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>108出したので破門の危機。</p>
- * <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
- * <div class="member-info">
- *   <h4>M</h4>
- *   <span>土偶</span>
- *   <p>地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。</p>
- */
+require_once("members.php");
 ?>
 <!DOCTYPE html>
 <html lang="ja">
