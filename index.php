@@ -1,3 +1,53 @@
+<?php
+$members=[
+    [
+        "name"=>"J",
+        "img"=>"team-1.jpg",
+        "summary"=>"美容師",
+        "description"=>"ゴルフとナンパが好き。<br>ナンパが好き。"
+    ],
+    [
+        "name"=>"A",
+        "img"=>"team-2.jpg",
+        "summary"=>"無職",
+        "description"=>"無職。限定好き。<br>地図が読めない。"
+    ],
+    [
+        "name"=>"T",
+        "img"=>"team-3.jpg",
+        "summary"=>"CTO",
+        "description"=>"多忙",
+    ],
+    [
+        "name"=>"N",
+        "img"=>"team-4.jpg",
+        "summary"=>"飲食店店員",
+        "description"=>"ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>108出したので破門の危機。",
+
+    ],
+    [
+        "name"=>"M",
+        "img"=>"team-5.jpg",
+        "summary"=>"土偶",
+        "description"=>"地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。",
+    ],
+];
+/* <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+ * <div class="member-info">
+ *   <h4>T</h4>
+ *   <span>CTO</span>
+ *   <p>多忙</p>
+ * <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+ *   <h4>N</h4>
+ *   <span>飲食店店員</span>
+ *   <p>ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>108出したので破門の危機。</p>
+ * <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
+ * <div class="member-info">
+ *   <h4>M</h4>
+ *   <span>土偶</span>
+ *   <p>地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。</p>
+ */
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -399,90 +449,24 @@
 
         <div class="row">
 
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>J</h4>
-                <span>美容師</span>
-                <p>ゴルフとナンパが好き。<br>ナンパが好き。</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+            <?php foreach($members as $m):?>
+                <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="<?=mt_rand(1,count($members))*100?>">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="assets/img/team/<?=$m['img']?>" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4><?=$m["name"]?></h4>
+                            <span><?=$m["summary"]?></span>
+                            <p><?=$m["description"]?></p>
+                            <div class="social">
+                                <a href=""><i class="ri-twitter-fill"></i></a>
+                                <a href=""><i class="ri-facebook-fill"></i></a>
+                                <a href=""><i class="ri-instagram-fill"></i></a>
+                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>A</h4>
-                <span>無職</span>
-                <p>無職。限定好き。<br>地図が読めない。<br>ゴルフスクールに多額の投資。</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>T</h4>
-                <span>CTO</span>
-                <p>多忙</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="400">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>N</h4>
-                <span>飲食店店員</span>
-                <p>ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>108出したので破門の危機。</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="400">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>M</h4>
-                <span>土偶</span>
-                <p>地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+            <?php endforeach;?>
         </div>
 
       </div>
