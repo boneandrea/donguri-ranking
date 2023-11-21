@@ -1,7 +1,9 @@
 <?php
-require_once("members.php");
-require_once("scores.php");
-require_once("whatis.php");
+//
+// template with Bootstrap:
+// https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+//
+require_once("data.php");
 
 function ordinalNumber( $num ){
     $n = $num % 10;
@@ -222,8 +224,12 @@ $background=[
 
                     <div class="section-title">
                         <h2>Results</h2>
-                        <p>昼飯だ！人の金で！<br>順位はネットで決定<br>
-                        レディースハンデは廃止されました(2023/11/23)</p>
+                        <p>
+                            昼飯だ！人の金で！<br>
+                            順位はネットで決定<br>
+                            レディースハンデは廃止されました(2023/11/23)<br>
+                            誕生日はハンデが1もらえます<br>
+                        </p>
                     </div>
 
                     <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
@@ -237,7 +243,7 @@ $background=[
                         <?php foreach($scores as $i=>$score):?>
                             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                                 <div class="portfolio-img">
-                                    <img src="assets/img/portfolio/<?=$background[rand(0,count($background)-1)]?>" class="img-fluid" alt=""/>
+                                    <img src="assets/img/portfolio/<?=$background[mt_rand(0,count($background)-1)]?>" class="img-fluid" alt=""/>
                                     <div class="portfolio-info">
                                         <h4><?=$score["date"]?></h4>
                                         <p><?=ordinalNumber($i+1)?></p>
