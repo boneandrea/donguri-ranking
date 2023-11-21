@@ -253,6 +253,7 @@ $background=[
                                                     <th scope="col">#</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Gross</th>
+                                                    <th scope="col">Excuse</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -261,6 +262,7 @@ $background=[
                                                         <th scope="row"><?=(int)$rank+1?></th>
                                                         <td><?=$s["name"]?></td>
                                                         <td><?=$s["gross"]?></td>
+                                                        <td>うまくいかなかった</td>
                                                     </tr>
                                                 <?php endforeach;?>
                                             </tbody>
