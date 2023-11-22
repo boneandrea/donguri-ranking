@@ -76,6 +76,12 @@ $results=$ch->mergeComment($results,$members);
              * Author: BootstrapMade.com
              * License: https://bootstrapmade.com/license/
              ======================================================== -->
+        <!-- 絵文字対応 -->
+        <style>
+         .portfolio-info table td{
+             font-family: apple color emoji,segoe ui emoji,noto color emoji,android emoji,emojisymbols,emojione mozilla,twemoji mozilla,segoe ui symbol;
+         }
+        </style>
     </head>
 
     <body>
