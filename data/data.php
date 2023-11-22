@@ -1,50 +1,8 @@
 <?php
-$members=json_decode(file_get_contents(__DIR__."/users.json"), true);
+require "vendor/autoload.php";
 
-$results=[
-    [
-        "date"=>"2023/10/24",
-        "score"=>[
-            [
-                "name"=>"J",
-                "gross"=>"77",
-            ],
-            [
-                "name"=>"A",
-                "gross"=>"79",
-            ],
-            [
-                "name"=>"T",
-                "gross"=>"83",
-            ],
-            [
-                "name"=>"N",
-                "gross"=>"86",
-            ],
-        ],
-    ],
-    [
-        "date"=>"2023/11/21",
-        "score"=>[
-            [
-                "name"=>"A",
-                "gross"=>"80",
-            ],
-            [
-                "name"=>"T",
-                "gross"=>"80",
-            ],
-            [
-                "name"=>"J",
-                "gross"=>"84",
-            ],
-            [
-                "name"=>"N",
-                "gross"=>"100",
-            ],
-        ],
-    ],
-];
+$results = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__."/results.yaml"), true);
+$members=json_decode(file_get_contents(__DIR__."/users.json"), true);
 
 $whatis=[
     "ゴロを打つ",
