@@ -3,7 +3,8 @@
 // template with Bootstrap:
 // https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
 //
-require_once("data.php");
+require_once("data/data.php");
+require_once("data/commentHandler.php");
 
 function ordinalNumber( $num ){
     $n = $num % 10;
@@ -34,6 +35,10 @@ $background=[
     "portfolio-6.jpg",
     "portfolio-7.jpg",
 ];
+
+$ch=new CommentHandler();
+$ch->registerComment(date: $argv[1], userId: $argv[2], comment:$argv[3]);
+$results=$ch->mergeComment($results,$members);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -240,12 +245,12 @@ $background=[
                     </ul>
 
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                        <?php foreach($scores as $i=>$score):?>
+                        <?php foreach($results as $i=>$result):?>
                             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                                 <div class="portfolio-img">
                                     <img src="assets/img/portfolio/<?=$background[mt_rand(0,count($background)-1)]?>" class="img-fluid" alt=""/>
                                     <div class="portfolio-info">
-                                        <h4><?=$score["date"]?></h4>
+                                        <h4><?=$result["date"]?></h4>
                                         <p><?=ordinalNumber($i+1)?></p>
                                         <table class="table">
                                             <thead>
@@ -257,12 +262,12 @@ $background=[
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($score["score"] as $rank=>$s):?>
+                                                <?php foreach($result["score"] as $rank=>$s):?>
                                                     <tr>
                                                         <th scope="row"><?=(int)$rank+1?></th>
                                                         <td><?=$s["name"]?></td>
                                                         <td><?=$s["gross"]?></td>
-                                                        <td>うまくいかなかった</td>
+                                                        <td><?=$s["excuse"] ?? ''?></td>
                                                     </tr>
                                                 <?php endforeach;?>
                                             </tbody>
