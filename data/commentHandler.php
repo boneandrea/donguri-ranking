@@ -35,7 +35,7 @@ class CommentHandler{
         return json_decode(file_get_contents($this->file), true);
     }
     public function save(){
-        file_put_contents($this->file,json_encode($this->comments, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+        file_put_contents($this->file,json_encode($this->comments, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT));
     }
 
     // results[] のscoresにcommentを埋め込む(joinのような処理)
