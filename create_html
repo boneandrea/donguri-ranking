@@ -3,4 +3,4 @@
 # - edit members.php
 # - run this command
 
-php generate.php "$date" "$userId" "$comment" >| index.html
+php generate.php "$1" "$2" "$3" >| index.html

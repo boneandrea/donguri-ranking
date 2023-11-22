@@ -6,12 +6,11 @@ use Ramsey\Uuid\Uuid;
 
 class CommentHandler{
     public $comments=null;
-    public $file=__DIR__."/comment.json";
+    public $file=__DIR__."/comments.json";
 
     public function __construct(){
-        $this->file=__DIR__."/comment.json";
-
     }
+
     public function registerComment($date, $userId, $comment){
         $this->comments=$this->read();
         $items=array_filter($this->comments, fn($e)=>$e["date"]===$date && $e["userId"]===$userId);

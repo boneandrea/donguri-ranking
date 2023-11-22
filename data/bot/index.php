@@ -27,7 +27,6 @@ function update_excuse($json){
             $comment=escapeshellarg($m[1]);
             $userId=escapeshellarg($from);
             $date=escapeshellarg(date("Y/m/d"));
-            $date="2023/11/21";
             exec("./create_html $date $userId $comment",$output, $r);
             exec("cp index.html /var/www/html/junk/donguri/", $output, $r);
         }
