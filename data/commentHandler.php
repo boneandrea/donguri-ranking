@@ -27,7 +27,7 @@ class CommentHandler{
     }
     public function update($id, $date, $userId, $comment){
         $_id=array_search($id, array_column($this->comments,"id"));
-        $item=$this->comments[$_id];
+        $this->comments[$_id]["id"] = Uuid::uuid4()->toString();
         $this->comments[$_id]["comment"]=$comment;
         $this->save();
     }
