@@ -2,3 +2,4 @@
 /vendor/
 /data/comments.json
 /data/results.yaml
+/.php-cs-fixer.cache

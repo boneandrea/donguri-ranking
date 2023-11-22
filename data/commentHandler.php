@@ -38,7 +38,7 @@ class CommentHandler{
         file_put_contents($this->file,json_encode($this->comments, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
     }
 
-    // TODO: results[] のscoresにcommentを埋め込む
+    // results[] のscoresにcommentを埋め込む(joinのような処理)
     public function mergeComment(array $results, array $members): array
     {
         $r=[];
@@ -49,15 +49,10 @@ class CommentHandler{
                 if($result["date"] !== $comment["date"]) continue;
                 $user=$this->getUserInfoByName($s["name"],$members);
                 $game=$this->getGame($comment["date"],$results);
-                // var_dump($game);
-                // var_dump($user);
-                // var_dump($comment);
                 $results[$i]["score"][$j]["excuse"] = $comment["comment"];
                 // comment has userId
                 // score has name
                 // name -> userId
-
-
             }
         }
         $this->save();

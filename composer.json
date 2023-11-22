@@ -1,6 +1,7 @@
 {
     "require": {
         "ramsey/uuid": "^4.7",
-        "symfony/yaml": "^6.3"
+        "symfony/yaml": "^6.3",
+        "friendsofphp/php-cs-fixer": "^3.39"
     }
 }
