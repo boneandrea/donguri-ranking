@@ -9,6 +9,7 @@ class CommentHandler{
     public $file=__DIR__."/comments.json";
 
     public function __construct(){
+        $this->comments=$this->read();
     }
 
     public function registerComment($date, $userId, $comment){
