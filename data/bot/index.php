@@ -17,6 +17,7 @@ function l($s)
 function update_excuse($json)
 {
     try {
+        l($json);
         $msg = $json["events"][0];
         $from = $msg["source"]["userId"];
         $text = $msg["message"]["text"];
