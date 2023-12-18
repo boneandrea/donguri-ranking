@@ -33,5 +33,12 @@
         "summary": "土偶",
         "description": "地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。",
         "userId": "U0f15e40caa6ee1f73ee15b611cefcb8f"
+    },
+    {
+        "name": "K",
+        "img": "team-6.jpg",
+        "summary": "若者",
+        "description": "縄文どころか平成生まれ。<br>彼女できる確率バーディくらい。",
+        "userId": "U18de735e1e28af931c4490ff4d5e35c0"
     }
 ]
