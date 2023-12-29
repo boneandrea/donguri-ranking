@@ -40,5 +40,12 @@
         "summary": "若者",
         "description": "縄文どころか平成生まれ。<br>彼女できる確率バーディくらい。",
         "userId": "U18de735e1e28af931c4490ff4d5e35c0"
+    },
+    {
+        "name": "H",
+        "img": "team-7.png",
+        "summary": "やや若者",
+        "description": "意識中くらいの若者。最近成長著しいとの声あり。",
+        "userId": "U9bda78a99a613180d9f7bf3850b690b6"
     }
 ]
