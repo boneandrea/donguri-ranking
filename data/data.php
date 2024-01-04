@@ -5,7 +5,12 @@ $results = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__."/resul
 $members=json_decode(file_get_contents(__DIR__."/users.json"), true);
 
 $whatis=[
-    "ゴロを打つ",
+    "ゴロを打つ ゴロとかｗｗｗｗｗｗヘボｗｗｗｗｗ",
     "とにかく乗らない、60yに未だ誰も乗らない、どうしようもない",
     "なぜか入らない",
+    "ラウンドしたらスコアカードをUPする",
+    "100切ったら破門。先着1名は全員のおごりで本牧亭",
+    "破門以降も参加可能。ただし昼飯バトルからは除外",
+    "レディースハンデ for Aは廃止されました(2023/11/23)",
+    "誕生月はハンデが1もらえます"
 ];

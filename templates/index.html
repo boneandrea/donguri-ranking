@@ -211,10 +211,8 @@
           <div class="section-title">
             <h2>Results</h2>
             <p>
-              昼飯だ！人の金で！<br>
-              順位はネットで決定<br>
-              レディースハンデは廃止されました(2023/11/23)<br>
-              誕生月はハンデが1もらえます<br>
+                人の金で昼飯だ！<br>
+                順位はネットで決定
             </p>
           </div>
 
@@ -229,7 +227,7 @@
             {% for result in results %}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div class="portfolio-img">
-                  <img src="assets/img/portfolio/{{ background[random(background|length)]}}" class="img-fluid" alt=""/>
+                  <img src="assets/img/portfolio/{{ random(background) }}" class="img-fluid" alt=""/>
                   <div class="portfolio-info">
                     <h4>{{ result.date }}</h4>
                     <p>{{ordinalNumber(loop.index)}}</p>
