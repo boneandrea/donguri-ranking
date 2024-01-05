@@ -37,8 +37,6 @@ $ordinalNumber = new \Twig\TwigFunction('ordinalNumber', function ($num) {
 
 // average
 $ranking=calculate_ranking_by_average($results, 2023);
-//dump_ranking($ranking); exit;
-//var_dump($results); exit;
 
 // コメント登録
 $ch=new CommentHandler();
@@ -46,9 +44,12 @@ $ch->registerComment(date: $argv[1], userId: $argv[2], comment:$argv[3]);
 
 // 試合結果とコメントをマージ
 $results=$ch->mergeComment($results,$members);
+$results=repack_to_divide_by_year($results);
 
 // render
 $loader = new \Twig\Loader\FilesystemLoader('./templates');
 $twig = new \Twig\Environment($loader);
 $twig->addFunction($ordinalNumber);
-echo $twig->render('index.html', compact("whatis", "background","results","members","ranking"));
+$years=range(2023,2024);
+
+echo $twig->render('index.html', compact("whatis", "background","results","members","ranking","years"));
