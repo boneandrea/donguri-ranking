@@ -258,7 +258,10 @@
                             <div class="portfolio-img">
                                 <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt=""/>
                                 <div class="portfolio-info">
-                                    <h4>{{ result.date }}</h4>
+                                    <h4>
+                                        {{ result.date }}
+                                        {{ result.place ? "(" : "" }}{{ result.place }}{{ result.place ? ")" : "" }}
+                                    </h4>
                                     <p>
                                         {{ordinalNumber(loop.index)}}
                                         {% if result.ignore_ranking %}
