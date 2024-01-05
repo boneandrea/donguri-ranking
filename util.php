@@ -4,7 +4,7 @@ function calculate_ranking_by_average(array $results, int $year){
     $_average=[];
     foreach($results as $game){
         if(!preg_match("/^$year/", $game["date"])) continue;
-        if(isset($game["use_ranking"]) && !$game["use_ranking"]) continue;
+        if(isset($game["ignore_ranking"]) && $game["ignore_ranking"]) continue;
         foreach($game["score"] as $s){
             if(!isset($_average[$s["name"]])){
                 $_average[$s["name"]] = [];

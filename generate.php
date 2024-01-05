@@ -35,7 +35,7 @@ $ordinalNumber = new \Twig\TwigFunction('ordinalNumber', function ($num) {
     }
 });
 
-// average
+// calculate average
 $ranking=calculate_ranking_by_average($results, 2023);
 
 // コメント登録
