@@ -13,16 +13,18 @@ function calculate_ranking_by_average(array $results, int $year){
         }
     }
 
-    $average=[];
+    $averages=[];
     foreach($_average as $name=>$scores){
-        $ave=round(array_sum($scores)/count($scores),2);
-        $average[]=compact("name","ave");
+        $count=count($scores);
+        $average=round(array_sum($scores)/$count,2);
+        $averages[]=compact("name","average","count");
     }
-    usort($average, function($a, $b){
-        if ($a["ave"]===$b["ave"]) return 0;
-        return $a["ave"] > $b["ave"] ? 1 : -1;
+    usort($averages, function($a, $b){
+        if ($a["average"]===$b["average"]) return 0;
+        return $a["average"] > $b["average"] ? 1 : -1;
     });
-    return compact("year","average");
+
+    return compact("year","averages");
 }
 
 

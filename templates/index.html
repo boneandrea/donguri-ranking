@@ -237,14 +237,16 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Average</th>
+                                                <th scope="col">Games</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for r in ranking.average %}
+                                            {% for r in ranking.averages %}
                                             <tr>
                                                 <th scope="row">{{ loop.index }}</th>
                                                 <td>{{ r.name }}</td>
-                                                <td>{{ r.ave }}</td>
+                                                <td>{{ r.average }}</td>
+                                                <td>{{ r.count }}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>

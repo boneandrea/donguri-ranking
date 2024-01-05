@@ -1,5 +1,5 @@
 <?php
-require "vendor/autoload.php";
+require __DIR__."/../vendor/autoload.php";
 
 $results = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__."/results.yaml"), true);
 $members=json_decode(file_get_contents(__DIR__."/users.json"), true);

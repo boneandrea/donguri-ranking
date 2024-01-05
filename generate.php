@@ -50,6 +50,6 @@ $results=repack_to_divide_by_year($results);
 $loader = new \Twig\Loader\FilesystemLoader('./templates');
 $twig = new \Twig\Environment($loader);
 $twig->addFunction($ordinalNumber);
-$years=range(2023,2024);
+$years=range(2023,(int)date('Y'));
 
 echo $twig->render('index.html', compact("whatis", "background","results","members","ranking","years"));
