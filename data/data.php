@@ -2,6 +2,13 @@
 require __DIR__."/../vendor/autoload.php";
 
 $results = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__."/results.yaml"), true);
+usort($results, function($a, $b){
+    $na=new DateTime($a["date"]);
+    $nb=new DateTime($b["date"]);
+    if ($na === $nb) return 0;
+    return $na > $nb? 1 : -1;
+});
+
 $members=json_decode(file_get_contents(__DIR__."/users.json"), true);
 
 $whatis=[
