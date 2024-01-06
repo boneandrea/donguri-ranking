@@ -18,16 +18,13 @@ require_once(__DIR__."/data/data.php");
 use Symfony\Component\Yaml\Yaml;
 
 session_start();
-
 if($_SERVER["REQUEST_METHOD"] === "POST") {
-    $data = parse_data();
-    $r = append_data($data, $results);
-    $_SESSION["append_data"] = $r === false ? 1 : 2;
-
+    register_score($results);
     header("Location: .");
     exit();
 }
 
+// GET
 if(isset($_SESSION["append_data"])) {
     $post_result = $_SESSION["append_data"];
     unset($_SESSION["append_data"]);
@@ -42,7 +39,7 @@ if(isset($_SESSION["append_data"])) {
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
-        <title>Hello, world!</title>
+        <title>底辺データ登録</title>
         <script>
          const q = s => document.querySelector(s);
          const qa = s => document.querySelectorAll(s);
@@ -161,4 +158,16 @@ function append_data(array $data, array $results)
     $results[] = $data;
     $yaml = Yaml::dump($results, 2);
     return file_put_contents(__DIR__."/data/results.yaml", $yaml);
+}
+
+function register_score(array $results): void
+{
+    $data = parse_data();
+    $r = append_data($data, $results);
+    $_SESSION["append_data"] = $r === false ? 1 : 2;
+
+    chdir("/home/ubuntu/www-work/donguri");
+    $r = null;
+    $output = [];
+    exec("./update", $output, $r);
 }
