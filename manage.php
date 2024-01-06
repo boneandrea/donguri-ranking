@@ -17,9 +17,20 @@ require_once(__DIR__."/data/data.php");
 
 use Symfony\Component\Yaml\Yaml;
 
+session_start();
+
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = parse_data();
-    append_data($data, $results);
+    $r = append_data($data, $results);
+    $_SESSION["append_data"] = $r === false ? 1 : 2;
+
+    header("Location: .");
+    exit();
+}
+
+if(isset($_SESSION["append_data"])) {
+    $post_result = $_SESSION["append_data"];
+    unset($_SESSION["append_data"]);
 }
 ?>
 <!DOCTYPE html>
@@ -44,6 +55,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     </head>
     <body>
         <div class="container">
+            <?php if ($post_result === 1):?>
+                <div class="alert alert-danger" role="alert">
+                    データ登録失敗
+                </div>
+            <?php endif;?>
+            <?php if ($post_result === 2):?>
+                <div class="alert alert-success" role="alert">
+                    データ登録成功
+                </div>
+            <?php endif;?>
             <h1>どんぐりデータ入力</h1>
             <div>
                 <form method="post">
@@ -59,14 +80,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                         <input name="place" placeholder="場所など特記事項" class="form-control" />
                     </div>
                     <?php foreach($members as $member):?>
-                        <!--
-                        <div class="form-group form-group-lg">
-                            <label class="col-sm-2 control-label" for="lg">form-group-lg</label>
-                            <div class="col-sm-4">
-                                <input class="form-control" type="text" id="lg">
-                            </div>
-                        </div>
-                        -->
                         <label>
                             <?=$member["name"]?>
                         </label>
@@ -147,5 +160,5 @@ function append_data(array $data, array $results)
 {
     $results[] = $data;
     $yaml = Yaml::dump($results, 2);
-    file_put_contents(__DIR__."/data/results.yaml", $yaml);
+    return file_put_contents(__DIR__."/data/results.yaml", $yaml);
 }
