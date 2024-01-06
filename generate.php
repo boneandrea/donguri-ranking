@@ -35,8 +35,13 @@ $ordinalNumber = new \Twig\TwigFunction('ordinalNumber', function ($num) {
     }
 });
 
+$years=range(2023,(int)date('Y'));
+
 // calculate average
-$ranking=calculate_ranking_by_average($results, 2023);
+$ranking=[];
+foreach($years as $y){
+    $ranking[]=calculate_ranking_by_average($results, $y);
+}
 
 // コメント登録
 $ch=new CommentHandler();
@@ -50,6 +55,5 @@ $results=repack_to_divide_by_year($results);
 $loader = new \Twig\Loader\FilesystemLoader('./templates');
 $twig = new \Twig\Environment($loader);
 $twig->addFunction($ordinalNumber);
-$years=range(2023,(int)date('Y'));
 
 echo $twig->render('index.html', compact("whatis", "background","results","members","ranking","years"));

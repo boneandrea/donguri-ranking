@@ -56,6 +56,15 @@
          .portfolio-info table td{
              font-family: MyFontFamily, sans-serif;
          }
+         .portfolio-info table .top{
+             font-weight: bold;
+         }
+         .portfolio-info table .top td{
+             background-color: #ace;
+         }
+         .portfolio-info table .top th{
+             background-color: #ace;
+         }
         </style>
     </head>
 
@@ -225,11 +234,12 @@
                     </ul>
 
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-whole">
+                        {% for rank in ranking %}
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-whole filter-{{rank.year}}">
                             <div class="portfolio-img">
                                 <img src="assets/img/portfolio/{{ random(background) }}" class="img-fluid" alt=""/>
-                                <div class="portfolio-info visible">
-                                    <h4>年間ランキング(調整中)</h4>
+                                <div class="portfolio-info">
+                                    <h4>Ranking {{rank.year}}</h4>
                                     <p>  </p>
                                     <table class="table">
                                         <thead>
@@ -241,8 +251,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for r in ranking.averages %}
-                                            <tr>
+                                            {% for r in rank.averages %}
+                                            <tr class="{% if loop.index == 1 %} top {% endif %}">
                                                 <th scope="row">{{ loop.index }}</th>
                                                 <td>{{ r.name }}</td>
                                                 <td>{{ r.average }}</td>
@@ -254,6 +264,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
                         {% for year, _results in results %}
                         {% for result in _results %}
                         <div class="col-lg-4 col-md-6 portfolio-item filter-{{year}}">
@@ -281,7 +292,7 @@
                                         </thead>
                                         <tbody>
                                             {% for s in result.score %}
-                                            <tr>
+                                            <tr class="{% if loop.index == 1 %}top{% endif %}">
                                                 <th scope="row">{{ loop.index }}</th>
                                                 <td>{{ s.name }}</td>
                                                 <td>{{ s.gross }}</td>
