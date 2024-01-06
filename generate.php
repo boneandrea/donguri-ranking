@@ -1,10 +1,12 @@
 <?php
+
 require "vendor/autoload.php";
 require_once("data/data.php");
 require_once("data/commentHandler.php");
 require_once("util.php");
 
-$background=[
+
+$background = [
     // "portfolio-1.jpg",
     // "portfolio-2.jpg",
     // "portfolio-3.jpg",
@@ -19,7 +21,7 @@ $ordinalNumber = new \Twig\TwigFunction('ordinalNumber', function ($num) {
     $n = $num % 10;
     $t = floor($num / 10) % 10;
 
-    if($t === 1){
+    if($t === 1) {
         return $num . "th";
     } else {
         switch($n) {
@@ -35,25 +37,25 @@ $ordinalNumber = new \Twig\TwigFunction('ordinalNumber', function ($num) {
     }
 });
 
-$years=range(2023,(int)date('Y'));
+$years = range(2023, (int)date('Y'));
 
 // calculate average
-$ranking=[];
-foreach($years as $y){
-    $ranking[]=calculate_ranking_by_average($results, $y);
+$ranking = [];
+foreach($years as $y) {
+    $ranking[] = calculate_ranking_by_average($results, $y);
 }
 
 // コメント登録
-$ch=new CommentHandler();
+$ch = new CommentHandler();
 $ch->registerComment(date: $argv[1], userId: $argv[2], comment:$argv[3]);
 
 // 試合結果とコメントをマージ
-$results=$ch->mergeComment($results,$members);
-$results=repack_to_divide_by_year($results);
+$results = $ch->mergeComment($results, $members);
+$results = repack_to_divide_by_year($results);
 
 // render
 $loader = new \Twig\Loader\FilesystemLoader('./templates');
 $twig = new \Twig\Environment($loader);
 $twig->addFunction($ordinalNumber);
 
-echo $twig->render('index.html', compact("whatis", "background","results","members","ranking","years"));
+echo $twig->render('index.html', compact("whatis", "background", "results", "members", "ranking", "years"));

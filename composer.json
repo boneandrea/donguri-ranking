@@ -2,7 +2,8 @@
     "require": {
         "ramsey/uuid": "^4.7",
         "symfony/yaml": "^6.3",
-        "friendsofphp/php-cs-fixer": "^3.39",
-        "twig/twig": "^3.8"
+        "friendsofphp/php-cs-fixer": "^3.46",
+        "twig/twig": "^3.8",
+        "phpmd/phpmd": "^2.15"
     }
 }

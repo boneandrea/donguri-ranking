@@ -1,6 +1,6 @@
 <?php
-$USER="admin";
-$PASS="ruxorei8TieshooPh6ZeiTe3";
+$USER = "admin";
+$PASS = "ruxorei8TieshooPh6ZeiTe3";
 
 switch (true) {
     case !isset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']):
@@ -15,11 +15,10 @@ require_once(__DIR__."/data/data.php");
 // require_once(__DIR__."/data/commentHandler.php");
 // require_once(__DIR__."/util.php");
 
-use \Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Yaml;
 
-
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $data=parse_data();
+if($_SERVER["REQUEST_METHOD"] === "POST") {
+    $data = parse_data();
     append_data($data, $results);
 }
 ?>
@@ -114,33 +113,39 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     </body>
 </html>
 <?php
-function d($data){
-    echo "<pre>";
-    var_dump($data);
-    echo "</pre>";
+/** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
+function d($data)
+{
+    // echo "<pre>";
+    // var_dump($data);
+    // echo "</pre>";
 }
 
-function parse_data(){
-    $data=$_POST;
+function parse_data()
+{
+    $data = $_POST;
 
-    $result=[];
-    foreach($data["name"] as $index=>$name){
-        if(empty($data["gross"][$index])) continue;
-        $result[]=[
-            "name"=>$name,
-            "gross"=>(int)$data["gross"][$index],
+    $result = [];
+    foreach($data["name"] as $index => $name) {
+        if(empty($data["gross"][$index])) {
+            continue;
+        }
+        $result[] = [
+            "name" => $name,
+            "gross" => (int)$data["gross"][$index],
         ];
     }
-    $data["score"]=$result;
-    $data["date"]=preg_replace("/\-/","/",$data["date"]);
+    $data["score"] = $result;
+    $data["date"] = preg_replace("/\-/", "/", $data["date"]);
 
     unset($data["name"]);
     unset($data["gross"]);
     return $data;
 }
 
-function append_data(array $data,array $results){
-    $results[]=$data;
-    $yaml = Yaml::dump($results,2);
+function append_data(array $data, array $results)
+{
+    $results[] = $data;
+    $yaml = Yaml::dump($results, 2);
     file_put_contents(__DIR__."/data/results.yaml", $yaml);
 }
