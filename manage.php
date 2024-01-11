@@ -76,20 +76,14 @@ if(isset($_SESSION["append_data"])) {
                     <div class="form-group">
                         <input name="place" placeholder="場所など特記事項" class="form-control" />
                     </div>
-                    <?php foreach($members as $member):?>
-                        <label>
-                            <?=$member["name"]?>
-                        </label>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <input name="gross[]" type="number" class="score form-control" min="0" value="">
-                                </div>
-                                <div class="col-sm-2">
-                                    <span class="hide changed">Changed</span>
-                                </div>
-                                <input name="name[]" type="hidden" value="<?=$member['name']?>" class="form-control" >
+                    <?php foreach($members as $index => $member):?>
+                        <div class="row mb-3">
+                            <label for="inputScore<?=$index?>" class="col-sm-1 col-form-label"><?=$member["name"]?></label>
+                            <div class="col-sm-11">
+                                <input name="gross[]" type="number" class="score form-control" id="inputScore<?=$index?>" min="0" value="">
+                                <span class="hide changed">Changed</span>
                             </div>
+                            <input name="name[]" type="hidden" value="<?=$member['name']?>" class="form-control" >
                         </div>
                     <?php endforeach;?>
                     <div class="form-group">
