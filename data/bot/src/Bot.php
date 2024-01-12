@@ -12,26 +12,23 @@ class Bot
     {
     }
 
+    public function send()
+    {
+        echo file_get_contents(__DIR__."/../messages/message1.json");
+    }
+
     public function execute(array $json)
     {
-        $this->update_excuse($json);
         $msg = $json["events"][0];
         // $from = $msg["source"]["userId"];
         $text = $msg["message"]["text"];
-
         l($text);
-        l($text);
-        l($text);
+        $this->update_excuse($text);
     }
 
-    public function update_excuse($json)
+    public function update_excuse(string $text)
     {
         try {
-            l($json);
-            $msg = $json["events"][0];
-            $from = $msg["source"]["userId"];
-            $text = $msg["message"]["text"];
-
             if(preg_match("/\A@ (.*)/", $text, $m)) {
                 l("FOUND {$m[1]} from {$from}");
                 $comment = escapeshellarg($m[1]);
