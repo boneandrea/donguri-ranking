@@ -122,5 +122,15 @@ const clearData = () => {
   localStorage.removeItem('score')
 }
 
+const members = ['J', 'T', 'N']
+const displayMembers = () => {
+  members.forEach((name) => {
+    const x = q('#template tr').cloneNode(true)
+    q('tbody').appendChild(x)
+    q('th', x).innerText = name
+  })
+}
+
+displayMembers()
 restoreData()
 update()
