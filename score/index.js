@@ -38,6 +38,7 @@ q("#score").addEventListener("click", e=>{
 // スコア入力
 q("#myModal").addEventListener("click", e=>{
     if(!e.target.classList.contains("btn")) return
+    if(e.target.classList.contains("close")) return
 
     const score=e.target.innerHTML
     if(currentButton){
