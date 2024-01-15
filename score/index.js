@@ -64,6 +64,7 @@ q('#clear').addEventListener('click', () => {
 
 q('h1 span').innerText = `(${new Date().toLocaleDateString('ja-JP')})`
 
+// 画面アップデート
 const update = () => {
   const trs = qaa('tbody tr')
   const data = []
@@ -110,7 +111,6 @@ const restoreData = () => {
         button[hole_index].innerText = score ? score : '-'
       })
     })
-    update()
   }
 }
 
@@ -123,3 +123,4 @@ const clearData = () => {
 }
 
 restoreData()
+update()
