@@ -28,6 +28,8 @@ q("#score").addEventListener("click", e=>{
     if(!e.target.classList.contains("btn")) return
     const button=e.target
     const tr=button.closest("tr")
+    const hole=qaa("button", tr).indexOf(button)+1
+    q("#hole").innerText=hole
     myModal.show()
     currentButton=e.target
 })
