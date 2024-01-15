@@ -49,6 +49,7 @@ q("#myModal").addEventListener("click", e=>{
 
 // 全部クリア
 q("#clear").addEventListener("click",()=>{
+    if(!confirm("Clear all??")) return
     qaa("td button", q("tbody")).forEach(e=>e.innerHTML="-")
     update()
 })
