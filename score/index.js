@@ -66,7 +66,7 @@ q('h1 span').innerText = `(${new Date().toLocaleDateString('ja-JP')})`
 
 // 画面アップデート
 const update = () => {
-  const trs = qaa('tbody tr')
+  const trs = qaa('#score tbody tr')
   const data = []
   trs.forEach((tr, tr_index) => {
     data[tr_index] = []
@@ -104,7 +104,7 @@ const restoreData = () => {
     console.log('restore editing data')
     const parsed = JSON.parse(lastData)
 
-    const trs = qaa('tbody tr')
+    const trs = qaa('#score tbody tr')
     parsed.forEach((userData, tr_index) => {
       const button = qaa('td button', trs[tr_index])
       userData.forEach((score, hole_index) => {
