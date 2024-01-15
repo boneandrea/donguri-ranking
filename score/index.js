@@ -21,15 +21,19 @@ const qaa = (s, root) => {
 /* eslint-enable */
 
 let currentButton=null
+
+// 入力開始
 const myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
 q("#score").addEventListener("click", e=>{
     if(!e.target.classList.contains("btn")) return
-    console.log(e.target)
+    const button=e.target
+    const tr=button.closest("tr")
     myModal.show()
     currentButton=e.target
 })
 
 
+// スコア入力
 q("#myModal").addEventListener("click", e=>{
     if(!e.target.classList.contains("btn")) return
 
@@ -41,10 +45,13 @@ q("#myModal").addEventListener("click", e=>{
     update()
 })
 
+// 全部クリア
 q("#clear").addEventListener("click",()=>{
     qaa("td button", q("tbody")).forEach(e=>e.innerHTML="-")
     update()
 })
+
+q("h1 span").innerText=`(${new Date().toLocaleDateString('ja-JP')})`
 
 const update=()=>{
     const trs=qaa("tbody tr")
