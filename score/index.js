@@ -28,11 +28,17 @@ q('#score').addEventListener('click', (e) => {
   if (!e.target.classList.contains('btn')) return
   const button = e.target
   const tr = button.closest('tr')
-  const hole = qaa('button', tr).indexOf(button) + 1
+  const hole = getHoleAndName(tr,button)
   q('#hole').innerText = hole
   myModal.show()
   currentButton = e.target
 })
+
+const getHoleAndName=(tr,button)=>{
+    const hole = qaa('button', tr).indexOf(button) + 1
+    const name = q('th', tr).innerText
+    return `${hole}: player ${name}`
+}
 
 // スコア入力
 q('#myModal').addEventListener('click', (e) => {
