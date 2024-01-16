@@ -3,14 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Score Card</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link href="/bootstrap-5.3.0-examples/modals/modals.css">
-        <title>Score Card</title>
+        <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+        <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+        <link rel="stylesheet" href="./index.css">
     </head>
     <body>
         <div class="container">
             <h1>Score<span id="date"></span></h1>
-            <table class="table" id="score">
+            <div class="main">
+                <table class="table" id="score">
                 <thead>
                     <tr class="text-center">
                         <th scope="col">Name</th>
@@ -39,39 +43,39 @@
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
-            <div id="template" class="d-none">
+                </table>
+                <div id="template" class="d-none">
                 <table>
                     <tbody>
                         <tr class="text-center align-middle">
-                    <th scope="row"></th>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td class="align-middle total1 text-bg-primary"></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td><button type="button" class="btn btn-light">-</button></td>
-                    <td class="align-middle total2 text-bg-primary"></td>
-                    <td class="fw-bold total3 align-middle text-bg-success"></td>
-                    </tr>
+                            <th scope="row"></th>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td class="align-middle total1 text-bg-primary"></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td><button type="button" class="btn btn-light">-</button></td>
+                            <td class="align-middle total2 text-bg-primary"></td>
+                            <td class="fw-bold total3 align-middle text-bg-success"></td>
+                        </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
             <button id="clear" type="button" class="btn btn-danger text-nowrap">Clear all</button>
-
         </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

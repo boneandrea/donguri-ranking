@@ -134,3 +134,5 @@ const displayMembers = () => {
 displayMembers()
 restoreData()
 update()
+
+new ScrollHint(".main");
