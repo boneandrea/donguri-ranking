@@ -69,7 +69,7 @@ if(isset($_SESSION["append_data"])) {
                         <input type="date" name="date" value="<?=date('Y-m-d')?>" class="form-control" />
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="hidden" name="ignore" value="0" />
+                        <input type="hidden" name="ignore_ranking" value="0" />
                         <input id="ignore" type="checkbox" name="ignore" value="1" class="form-check-label" />
                         <label for="ignore">ランキングに含めない</label>
                     </div>
