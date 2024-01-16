@@ -20,13 +20,12 @@ class Bot
     public function execute(array $json)
     {
         $msg = $json["events"][0];
-        // $from = $msg["source"]["userId"];
+        $from = $msg["source"]["userId"];
         $text = $msg["message"]["text"];
-        l($text);
-        $this->update_excuse($text);
+        $this->update_excuse($text, $from);
     }
 
-    public function update_excuse(string $text)
+    public function update_excuse(string $text, string $from)
     {
         try {
             if(preg_match("/\A@ (.*)/", $text, $m)) {

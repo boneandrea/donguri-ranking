@@ -70,8 +70,8 @@ if(isset($_SESSION["append_data"])) {
                     </div>
                     <div class="mb-3 form-check">
                         <input type="hidden" name="ignore_ranking" value="0" />
-                        <input id="ignore" type="checkbox" name="ignore" value="1" class="form-check-label" />
-                        <label for="ignore">ランキングに含めない</label>
+                        <input id="ignore_ranking" type="checkbox" name="ignore_ranking" value="1" class="form-check-label" />
+                        <label for="ignore_ranking">ランキングに含めない</label>
                     </div>
                     <div class="form-group">
                         <input name="place" placeholder="場所など特記事項" class="form-control" />
