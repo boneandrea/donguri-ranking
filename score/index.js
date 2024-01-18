@@ -21,6 +21,7 @@ const qaa = (s, root) => {
 /* eslint-enable */
 
 let currentButton = null
+let live = false
 
 // 入力開始
 const myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
@@ -96,6 +97,7 @@ const update = () => {
     q('.total3', tr).innerText = total1 + total2
   })
   storeData(data)
+  if (live) postScore(data)
 }
 
 const restoreData = () => {
@@ -131,8 +133,49 @@ const displayMembers = () => {
   })
 }
 
+// add name
+const createScore = (score) => {
+  const data = []
+  const name = qaa('#score tbody tr th').forEach((e, index) => {
+    data.push({ name: e.innerText, score: score[index] })
+  })
+  return data
+}
+
+const postScore = (score) => {
+  score = createScore(score)
+  console.log(score)
+  fetch('live.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(score),
+  })
+    .then((r) => r.json())
+
+    .then((r) => {
+      console.log(JSON.parse(r))
+    })
+}
+
+q('#live').addEventListener('change', (e) => {
+  live = e.target.checked
+  localStorage.setItem('live', live)
+  if (live) {
+    if (!confirm('start live?')) return
+    // [ ] post data dynamically
+    console.log('live start')
+  }
+})
+
+if (localStorage.getItem('live') == 'true') {
+  q('#live').checked = true
+}
+live = eval(localStorage.getItem('live'))
+
 displayMembers()
 restoreData()
 update()
 
-new ScrollHint(".main");
+new ScrollHint('.main')
