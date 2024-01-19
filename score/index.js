@@ -97,7 +97,10 @@ const update = () => {
     q('.total3', tr).innerText = total1 + total2
   })
   storeData(data)
-  if (live) postScore(data)
+  if (live) {
+    console.log(data)
+    postScore(data)
+  }
 }
 
 const restoreData = () => {
@@ -122,6 +125,7 @@ const storeData = (data) => {
 
 const clearData = () => {
   localStorage.removeItem('score')
+  localStorage.removeItem('round_id')
 }
 
 const members = ['J', 'T', 'N']
@@ -145,17 +149,40 @@ const createScore = (score) => {
 const postScore = (score) => {
   score = createScore(score)
   console.log(score)
+  const data = {}
+  data['score'] = score
+  data['round_id'] = localStorage.getItem('round_id')
   fetch('live.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(score),
+    body: JSON.stringify(data),
+  })
+    .then((r) => r.json())
+    .then((json) => {
+      console.log(json)
+    })
+}
+let round_id = null
+const start_round = () => {
+  console.log(members)
+  fetch('live.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      start: true,
+      members,
+      round_id: localStorage.getItem('round_id'),
+    }),
   })
     .then((r) => r.json())
 
-    .then((r) => {
-      console.log(JSON.parse(r))
+    .then((response) => {
+      console.log(response)
+      localStorage.setItem('round_id', response['round_id'])
     })
 }
 
@@ -165,6 +192,7 @@ q('#live').addEventListener('change', (e) => {
   if (live) {
     if (!confirm('start live?')) return
     // [ ] post data dynamically
+    start_round()
     console.log('live start')
   }
 })

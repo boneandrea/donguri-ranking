@@ -2,4 +2,5 @@
 vendor
 /data/comments.json
 /data/results.yaml
+/score/round/*
 /.php-cs-fixer.cache
