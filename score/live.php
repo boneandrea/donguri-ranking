@@ -23,10 +23,7 @@ function create_file($round_id, $members)
     );
     file_put_contents(__DIR__."/round/{$round_id}.json", json_encode($initial_data));
 
-    $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/templates');
-    $twig = new \Twig\Environment($loader);
-    $html = __DIR__."/round/{$round_id}.html";
-    file_put_contents($html, $twig->render('index.html', ["scores" => $initial_data]));
+    update_html($round_id);
 }
 
 function create_round_id()
@@ -42,12 +39,18 @@ function update_score($data)
     file_put_contents($file, json_encode($data["score"]), LOCK_EX);
 }
 
-function create_html($data)
+function read_score($round_id)
 {
+    $json = __DIR__."/round/{$round_id}.json";
+    return json_decode(file_get_contents($json));
+}
+
+function update_html($round_id)
+{
+    $scores = read_score($round_id);
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/templates');
     $twig = new \Twig\Environment($loader);
-    $scores = $data["score"];
-    $file = __DIR__."/round/{$data['round_id']}.html";
+    $file = __DIR__."/round/{$round_id}.html";
     file_put_contents($file, $twig->render('index.html', compact("scores")));
 }
 
@@ -69,7 +72,7 @@ if($data["start"] ?? false) {
     if($round_id = $data["round_id"] ?? false) {
         l("startED round: $round_id");
         update_score($data);
-        create_html($data);
+        update_html($round_id);
         notify_to_line($round_id);
     }
 }
