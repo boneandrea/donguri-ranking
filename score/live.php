@@ -51,6 +51,13 @@ function create_html($data)
     file_put_contents($file, $twig->render('index.html', compact("scores")));
 }
 
+function notify_to_line($round_id)
+{
+    l($round_id);
+    // TODO: post to LINE group
+}
+
+
 $data = json_decode(file_get_contents("php://input"), true);
 $ret = [];
 if($data["start"] ?? false) {
@@ -63,6 +70,7 @@ if($data["start"] ?? false) {
         l("startED round: $round_id");
         update_score($data);
         create_html($data);
+        notify_to_line($round_id);
     }
 }
 
