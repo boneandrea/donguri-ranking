@@ -196,6 +196,7 @@ const start_round = () => {
     .then((response) => {
       console.log(response)
       localStorage.setItem('round_id', response['round_id'])
+      update()
     })
 }
 
@@ -204,7 +205,6 @@ q('#live').addEventListener('change', (e) => {
   localStorage.setItem('live', live)
   if (live) {
     if (!confirm('start live?')) return
-    // [ ] post data dynamically
     start_round()
     console.log('live start')
   }
