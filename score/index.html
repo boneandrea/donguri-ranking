@@ -75,13 +75,20 @@
                 </table>
                 </div>
             </div>
-            <button id="clear" type="button" class="btn btn-danger text-nowrap">Clear all</button>
-            <div class="float-end">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="live">
-                    <label class="form-check-label" for="live">Live</label>
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <button id="clear" type="button" class="btn btn-danger text-nowrap">Clear all</button>
                 </div>
-            </div>
+                <div class="col-md-6">
+                    <button id="end" type="button" class="btn btn-danger text-nowrap">End Game</button>
+                </div>
+                <div class="float-end">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="live">
+                        <label class="form-check-label" for="live">Live</label>
+                    </div>
+                </div>
+            </form>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
