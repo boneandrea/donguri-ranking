@@ -47,3 +47,9 @@ q('#submit').addEventListener('click', () => {
   localStorage.setItem('golf_members', JSON.stringify(get_members()))
   window.location.href = './'
 })
+
+const members = JSON.parse(localStorage.getItem('golf_members'))
+if (members !== null) {
+  alert('ゲーム中です')
+  window.location.href = './'
+}
