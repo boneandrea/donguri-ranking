@@ -42,6 +42,8 @@ q('form').addEventListener('change', (e) => {
 q('#submit').addEventListener('click', () => {
   if (!confirm('Start OK?')) return
 
+  localStorage.setItem('live', false)
+  localStorage.setItem('score', [])
   localStorage.setItem('golf_members', JSON.stringify(get_members()))
   window.location.href = './'
 })

@@ -54,13 +54,22 @@ q('#myModal').addEventListener('click', (e) => {
   update()
 })
 
+// ゲーム終了
+q('#end').addEventListener('click', (e) => {
+  if (!confirm('END THIS GAME???')) return
+  localStorage.removeItem('golf_members')
+  window.location.href = './select_members.php'
+})
+
 // 全部クリア
 q('#clear').addEventListener('click', () => {
-  if (!confirm('Clear all??')) return
+  if (!confirm('Clear all??\n(LIVE will be stopped)')) return
 
   qaa('td button', q('tbody')).forEach((e) => (e.innerHTML = '-'))
   update()
   clearData()
+  live = false
+  q('#live').checked = false
 })
 
 q('h1 span').innerText = `(${new Date().toLocaleDateString('ja-JP')})`
