@@ -12,9 +12,21 @@ function l($s)
     error_log(print_r($s, true)."\n");
 }
 
-function create_file($id, $data)
+function create_file($round_id, $members)
 {
-    file_put_contents(__DIR__."/round/$id.json", json_encode($data));
+    $initial_data = array_map(
+        fn ($m) => [
+        "name" => $m,
+        "score" => array_fill(0, 18, 0)
+    ],
+        $members
+    );
+    file_put_contents(__DIR__."/round/{$round_id}.json", json_encode($initial_data));
+
+    $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/templates');
+    $twig = new \Twig\Environment($loader);
+    $html = __DIR__."/round/{$round_id}.html";
+    file_put_contents($html, $twig->render('index.html', ["scores" => $initial_data]));
 }
 
 function create_round_id()
