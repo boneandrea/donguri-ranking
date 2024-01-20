@@ -128,7 +128,11 @@ const clearData = () => {
   localStorage.removeItem('round_id')
 }
 
-const members = ['J', 'T', 'N']
+let members = []
+const getMembers = () => JSON.parse(localStorage.getItem('golf_members'))
+
+if (!(members = getMembers())) window.location.href = './select_members.php'
+
 const displayMembers = () => {
   members.forEach((name) => {
     const x = q('#template tr').cloneNode(true)
