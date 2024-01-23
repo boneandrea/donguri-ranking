@@ -1,3 +1,4 @@
 cd `dirname $0`
 ./create_html
 ./deploy
+chmod 666 data/*.json data/*.yaml
