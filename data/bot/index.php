@@ -1,13 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Donguri;
 
-require("vendor/autoload.php");
+require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__.'/src/util.php';
 
-use Donguri\Bot\Bot;
+use Donguri\Bot;
 
-function return_challenge(array $json=[])
+function return_challenge(array $json = [])
 {
     header("Content-Type: application/json; charset=utf-8");
     echo json_encode($json);
@@ -20,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
 try {
     $json = json_decode(file_get_contents("php://input") ?? "{}", true);
-    $bot=new Bot();
+    $bot = new Bot();
     // 認証時有効にする
     // Event Subscriptions
     $app_auth_challenge = true;

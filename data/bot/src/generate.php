@@ -7,7 +7,7 @@ namespace Donguri;
 require_once __DIR__."/../../../vendor/autoload.php";
 
 require_once(__DIR__."/../../../data/data.php");
-require_once(__DIR__."/../../../util.php");
+require_once(__DIR__."/util.php");
 
 class Donguri
 {

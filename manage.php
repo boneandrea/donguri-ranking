@@ -151,7 +151,7 @@ function append_data(array $data, array $results)
 {
     $results[] = $data;
     $yaml = Yaml::dump($results, 2);
-    return file_put_contents(__DIR__."/data/results.yaml", $yaml);
+    return file_put_contents(__DIR__."/data/results.yaml", $yaml, LOCK_EX);
 }
 
 function register_score(array $results): void

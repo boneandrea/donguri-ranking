@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * _l
+ *
+ * @SuppressWarnings(PHPMD.DevelopmentCodeFragment)
+ */
+function l($s)
+{
+    error_log(print_r($s, true)."\n");
+}
 function calculate_ranking_by_average(array $results, int $year)
 {
     $_average = [];
