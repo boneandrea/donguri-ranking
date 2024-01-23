@@ -17,7 +17,7 @@
     },
     {
         "name": "T",
-        "img": "team-3.jpg",
+        "img": "team-3-1.jpg",
         "best": 114,
         "summary": "CTO",
         "description": "多忙",
@@ -28,14 +28,16 @@
         "img": "team-4.jpg",
         "summary": "飲食店店員",
         "description": "ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>108出したので破門の危機。",
-        "userId": "U6a58785ab21b5f9cae27fcf3f353cf5d"
+        "userId": "U6a58785ab21b5f9cae27fcf3f353cf5d",
+        "best": 129
     },
     {
         "name": "M",
         "img": "team-5.jpg",
         "summary": "土偶",
         "description": "地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。",
-        "userId": "U0f15e40caa6ee1f73ee15b611cefcb8f"
+        "userId": "U0f15e40caa6ee1f73ee15b611cefcb8f",
+        "best": 999
     },
     {
         "name": "K",
