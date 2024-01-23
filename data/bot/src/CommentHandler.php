@@ -1,13 +1,15 @@
 <?php
 
-require_once 'vendor/autoload.php';
+namespace Donguri;
+
+require_once __DIR__.'/../../../vendor/autoload.php';
 
 use Ramsey\Uuid\Uuid;
 
 class CommentHandler
 {
     public $comments = null;
-    public $file = __DIR__."/comments.json";
+    public $file = __DIR__."/../../comments.json";
 
     public function __construct()
     {

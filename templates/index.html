@@ -327,7 +327,12 @@
                             <div class="member d-flex align-items-start">
                                 <div class="pic"><img src="assets/img/team/{{member.img}}" class="img-fluid" alt=""></div>
                                 <div class="member-info">
-                                    <h4>{{ member.name }}</h4>
+                                    <h4>
+                                        {{ member.name }}
+                                        {% if member.best %}
+                                        ({{member.best}})
+                                        {% endif %}
+                                    </h4>
                                     <span>{{ member.summary }}</span>
                                     <p>{{ member.description | raw }}</p>
                                     <div class="social">

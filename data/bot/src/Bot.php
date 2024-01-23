@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Donguri\Bot;
+namespace Donguri;
 
 require("util.php");
 
@@ -39,6 +39,18 @@ class Bot
                 $output = [];
                 exec("./create_html $date $userId $comment", $output, $r);
                 exec("cp index.html /var/www/html/junk/donguri/", $output, $r);
+            }
+            if(preg_match("/\Aベスト.*(\d+)/", $text, $m)) {
+                l("FOUND {$m[1]} from {$from}");
+                // $best = escapeshellarg($m[1]);
+                // $userId = escapeshellarg($from);
+                // $date = escapeshellarg(date("Y/m/d"));
+
+                // chdir("/home/ubuntu/www-work/donguri");
+                // $r = null;
+                // $output = [];
+                // exec("./create_html $date $userId $comment", $output, $r);
+                // exec("cp index.html /var/www/html/junk/donguri/", $output, $r);
             }
         } catch(Exception $e) {
             l($e->getMessage());

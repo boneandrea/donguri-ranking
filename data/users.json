@@ -16,6 +16,7 @@
     {
         "name": "T",
         "img": "team-3.jpg",
+        "best": 114,
         "summary": "CTO",
         "description": "多忙",
         "userId": "U11bac06cffe164a45e0dd72c438bb68f"

@@ -1,9 +1,0 @@
-{
-    "name": "donguri/bot",
-    "autoload": {
-        "psr-4": {
-            "Donguri\\Bot\\": "src/"
-        }
-    },
-    "require": {}
-}

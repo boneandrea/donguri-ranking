@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "Donguri\\": "data/bot/src"
+        }
+    },
     "require": {
         "ramsey/uuid": "^4.7",
         "symfony/yaml": "^6.3",

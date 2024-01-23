@@ -3,4 +3,5 @@
 # - edit members.php
 # - run this command
 
-php generate.php "$1" "$2" "$3" >| index.html
+#php generate.php "$1" "$2" "$3" >| index.html
+php data/bot/src/generate.php "$1" "$2" "$3" >| index.html
