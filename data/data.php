@@ -3,15 +3,34 @@
 require __DIR__."/../vendor/autoload.php";
 
 $results = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__."/results.yaml"), true);
-usort($results, function ($a, $b) {
-    $na = new DateTime($a["date"]);
-    $nb = new DateTime($b["date"]);
-    if ($na === $nb) {
-        return 0;
-    }
-    return $na > $nb ? 1 : -1;
-});
 
+
+function sort_by_date($results)
+{
+    usort($results, function ($a, $b) {
+        $na = new DateTime($a["date"]);
+        $nb = new DateTime($b["date"]);
+        if ($na === $nb) {
+            return 0;
+        }
+        return $na > $nb ? 1 : -1;
+    });
+}
+
+function sort_by_score($results)
+{
+    foreach(array_keys($results) as $k) {
+        usort($results[$k]["score"], function ($a, $b) {
+            if ($a["gross"] === $b["gross"]) {
+                return 0;
+            }
+            return $a["gross"] > $b["gross"] ? 1 : -1;
+        });
+    }
+    return $results;
+}
+sort_by_date($results);
+$results = sort_by_score($results);
 $members = json_decode(file_get_contents(__DIR__."/users.json"), true);
 
 $whatis = [
