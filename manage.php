@@ -12,6 +12,7 @@ switch (true) {
 }
 
 require_once(__DIR__."/data/data.php");
+require_once(__DIR__."/post_line.php");
 // require_once(__DIR__."/data/commentHandler.php");
 // require_once(__DIR__."/util.php");
 
@@ -20,6 +21,7 @@ use Symfony\Component\Yaml\Yaml;
 session_start();
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     register_score($results);
+    post("score更新しました: https://peixe.biz/junk/donguri/");
     header("Location: .");
     exit();
 }
@@ -113,6 +115,7 @@ if(isset($_SESSION["append_data"])) {
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"
         ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="./manage.js"></script>
     </body>
 </html>

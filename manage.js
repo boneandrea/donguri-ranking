@@ -29,3 +29,12 @@ document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
   }
 })
+if(0)$(document).ready(function() {
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxftKzsOgfxqSx35sOcqqrgWl-gg9g5t6bkUfxyEfQfOUeTO4bsk3h4VVmiwjRSJVee/exec",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data)
+        }
+    })
+})
