@@ -76,7 +76,7 @@ if(isset($_SESSION["append_data"])) {
                         <label for="ignore_ranking">ランキングに含めない</label>
                     </div>
                     <div class="form-group">
-                        <input name="place" placeholder="場所など特記事項" class="form-control" />
+                        <input name="place" placeholder="天気、場所など特記事項" class="form-control" />
                     </div>
                     <?php foreach($members as $index => $member):?>
                         <div class="row mb-3">
