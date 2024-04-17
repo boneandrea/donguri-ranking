@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Donguri;
 
 require_once __DIR__.'/util.php';
+require_once __DIR__.'/post_line.php';
 use Donguri\Data;
 
 class Bot
@@ -46,6 +47,7 @@ class Bot
                 $this->data->write_json(__DIR__."/../../users.json", $members);
                 $this->recreate_html(null, null, null);
             }
+            post("言い訳登録しました: https://peixe.biz/junk/donguri/");
         } catch(Exception $e) {
             l($e->getMessage());
         }

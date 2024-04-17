@@ -12,7 +12,7 @@ switch (true) {
 }
 
 require_once(__DIR__."/data/data.php");
-require_once(__DIR__."/post_line.php");
+require_once(__DIR__."/data/bot/src/post_line.php");
 // require_once(__DIR__."/data/commentHandler.php");
 // require_once(__DIR__."/util.php");
 
