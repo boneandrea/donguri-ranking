@@ -38,6 +38,7 @@ class Bot
                 $date = escapeshellarg(date("Y/m/d"));
 
                 $this->recreate_html($date, $userId, $comment);
+                post("言い訳登録しました: https://peixe.biz/junk/donguri/");
             }
             if(preg_match("/\Aベスト[^\d]*(\d+)/", $text, $m)) {
                 $best = intval($m[1]);
@@ -46,8 +47,8 @@ class Bot
                 $members[$userIndex]["best"] = $best;
                 $this->data->write_json(__DIR__."/../../users.json", $members);
                 $this->recreate_html(null, null, null);
+                post("ベストスコア更新しました: https://peixe.biz/junk/donguri/");
             }
-            post("言い訳登録しました: https://peixe.biz/junk/donguri/");
         } catch(Exception $e) {
             l($e->getMessage());
         }
