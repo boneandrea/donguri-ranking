@@ -32,26 +32,36 @@ class Bot
     {
         try {
             if(preg_match("/\A@ (.*)/", $text, $m)) {
-                l("FOUND {$m[1]} from {$from}");
-                $comment = escapeshellarg($m[1]);
-                $userId = escapeshellarg($from);
-                $date = escapeshellarg(date("Y/m/d"));
-
-                $this->recreate_html($date, $userId, $comment);
-                post("言い訳登録しました: https://peixe.biz/junk/donguri/");
+                $this->excuse($m, $from, $text);
             }
             if(preg_match("/\Aベスト[^\d]*(\d+)/", $text, $m)) {
-                $best = intval($m[1]);
-                $members = $this->data->read(__DIR__."/../../users.json");
-                $userIndex = array_search($from, array_column($members, "userId"));
-                $members[$userIndex]["best"] = $best;
-                $this->data->write_json(__DIR__."/../../users.json", $members);
-                $this->recreate_html(null, null, null);
-                post("ベストスコア更新しました: https://peixe.biz/junk/donguri/");
+                $this->best($m, $from);
             }
         } catch(Exception $e) {
             l($e->getMessage());
         }
+    }
+
+    public function excuse(array $m, ?string $from)
+    {
+        l("FOUND {$m[1]} from {$from}");
+        $comment = escapeshellarg($m[1]);
+        $userId = escapeshellarg($from);
+        $date = escapeshellarg(date("Y/m/d"));
+
+        $this->recreate_html($date, $userId, $comment);
+        post("言い訳登録しました: https://peixe.biz/junk/donguri/");
+    }
+
+    public function best(array $m, ?string $from)
+    {
+        $best = intval($m[1]);
+        $members = $this->data->read(__DIR__."/../../users.json");
+        $userIndex = array_search($from, array_column($members, "userId"));
+        $members[$userIndex]["best"] = $best;
+        $this->data->write_json(__DIR__."/../../users.json", $members);
+        $this->recreate_html(null, null, null);
+        post("ベストスコア更新しました: https://peixe.biz/junk/donguri/");
     }
 
     public function recreate_html(?string $date, ?string $userId, ?string $comment)
