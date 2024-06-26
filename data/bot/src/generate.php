@@ -21,7 +21,23 @@ class Donguri
         // "portfolio-7.jpg",
     ];
 
-    public function execute(array $argv)
+    // calculate besgro
+    public function find_best_gross($games, $year)
+    {
+        $games_every_year = array_filter($games, fn ($e) =>
+                                         preg_match("/^$year/", $e["date"]));
+        $best_gross = 100000;
+        foreach($games_every_year as $i) {
+            foreach($i["score"] as $s) {
+                if($s["gross"] < $best_gross) {
+                    $best_gross = $s["gross"];
+                }
+            }
+        }
+        return $best_gross;
+    }
+
+    public function execute(array $argv = [])
     {
         global $results,$members,$whatis;
         // 1st, 2nd などを表示
@@ -50,13 +66,16 @@ class Donguri
         // calculate average
         $ranking = [];
         foreach($years as $y) {
-            $ranking[] = calculate_ranking_by_average($results, $y);
+            $rank = calculate_ranking_by_average($results, $y);
+            $rank["best_gross"] = $this->find_best_gross($results, $y);
+            $ranking[] = $rank;
         }
 
         // コメント登録
         $ch = new CommentHandler();
-        $ch->registerComment(date: $argv[1], userId: $argv[2], comment:$argv[3]);
-
+        if(!empty($argv)) {
+            $ch->registerComment(date: $argv[1], userId: $argv[2], comment:$argv[3]);
+        }
         // 試合結果とコメントをマージ
         $results = $ch->mergeComment($results, $members);
         $results = repack_to_divide_by_year($results);
@@ -71,4 +90,4 @@ class Donguri
 }
 
 $x = new Donguri();
-$x->execute($argv);
+$x->execute($argv ?? []);
