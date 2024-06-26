@@ -1,6 +1,7 @@
 [
     {
         "name": "J",
+        "fullName": "Jin",
         "img": "team-1.jpg",
         "summary": "美容師、作家",
         "description": "ゴルフとナンパが好き。<br>ナンパが大好き。<br>性病持ってません。",
@@ -9,6 +10,7 @@
     },
     {
         "name": "A",
+        "fullName": "Ashako",
         "img": "team-2.jpg",
         "summary": "無職",
         "description": "無職。限定好き。<br>地図が読めない。<br>ゴルフスクールに多額の投資。",
@@ -17,6 +19,7 @@
     },
     {
         "name": "T",
+        "fullName": "Tanaka",
         "img": "team-3-1.jpg",
         "best": 114,
         "summary": "CTO",
@@ -25,6 +28,7 @@
     },
     {
         "name": "N",
+        "fullName": "Nagi",
         "img": "team-4.jpg",
         "summary": "飲食店店員",
         "description": "ゴルフ意識高い肉好き。ただしメンタルが弱い。<br>非公認ながら108出したので破門の危機。",
@@ -33,6 +37,7 @@
     },
     {
         "name": "M",
+        "fullName": "Miwa",
         "img": "team-5.jpg",
         "summary": "土偶",
         "description": "地球上唯一の縄文時代生まれ。年齢不詳。<br>ゴルフスクールに多額の投資。",
@@ -41,6 +46,7 @@
     },
     {
         "name": "K",
+        "fullName": "Kazuya",
         "img": "team-6.jpg",
         "summary": "若者",
         "description": "縄文どころか平成生まれ。<br>彼女できる確率バーディくらい。",
@@ -48,6 +54,7 @@
     },
     {
         "name": "H",
+        "fullName": "H.Kodama",
         "img": "team-7.png",
         "summary": "やや若者",
         "description": "意識中くらいの若者。最近成長著しいとの声あり。",

@@ -1,3 +1,12 @@
-.main{
-    overflow:auto;
+.hide{ display: none; }
+.changed{ color: red; }
+.members .member {
+    width: 120px;
+}
+.member button {
+    width: 100%;
+}
+.member button label{
+    width: 100%;
+    display: inline-block;
 }

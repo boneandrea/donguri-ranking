@@ -7,11 +7,8 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="index.css"/>
         <title>Select players</title>
-        <style>
-         .hide{ display: none; }
-         .changed{ color: red; }
-        </style>
     </head>
     <body>
         <div class="container">
@@ -19,15 +16,17 @@
                 Select players
                 <button id="submit" type="button" class="btn btn-primary">Start Game</button>
             </h1>
-            <div class="container-fluid">
+            <div class="container-fluid members">
                 <form method="post">
                     {% for member in members %}
-                    <div class="h-25 d-inline-block" style="width: 120px;">
+                    <div class="h-25 d-inline-block mb-1 member">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="{{member.name}}" id="flexCheckDefault-{{member.name}}">
-                            <label class="form-check-label" for="flexCheckDefault-{{member.name}}">
-                                {{ member.name }}
-                            </label>
+                            <button class="btn btn-secondary" type="button">
+                                <label class="form-check-label" for="flexCheckDefault-{{member.name}}">
+                                    {{ member.fullName }}
+                                </label>
+                            </button>
                         </div>
                     </div>
                     {% endfor %}
