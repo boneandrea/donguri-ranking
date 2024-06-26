@@ -35,7 +35,7 @@ $members = json_decode(file_get_contents(__DIR__."/users.json"), true);
 
 $whatis = [
     "ゴロを打つ ゴロとかｗｗｗｗｗｗヘボｗｗｗｗｗ",
-    "とにかく乗らない、60yに未だ誰も乗らない、どうしようもない",
+    'とにかく乗らない、<s>60yに未だ誰も乗らない、どうしようもない</s><br><b class="text-danger">&rarr;もはや余裕で1onのパー</b>',
     "なぜか入らない",
     '100切ったら<b class="text-danger">破門</b>&rarr;<b>顧問</b>に就任。先着1名は全員のおごりで本牧亭&rarr;<b>名誉顧問</b>',
     "ラウンドしたらスコアカードをUPする",
